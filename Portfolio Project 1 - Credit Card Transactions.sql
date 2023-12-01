@@ -137,15 +137,3 @@ where weekday(transaction_date) in('6','0')
 group by city
 order by ratio desc
 limit 1;
-
-
--- 9- which city took least number of days to reach its 500th transaction after the first transaction in that city
-
-select city,transaction_date, 
-dense_rank()over(partition by city order by transaction_date asc) as a_rnk,
-dense_rank()over(partition by city order by transaction_date desc) as d_rnk
-from credit_card
-
--- once you are done with this create a github repo to put that link in your resume. Some example github links:
--- https://github.com/ptyadana/SQL-Data-Analysis-and-Visualization-Projects/tree/master/Advanced%20SQL%20for%20Application%20Development
--- https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20Data%20Exploration.sql
